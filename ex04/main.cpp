@@ -6,26 +6,25 @@
 /*   By: joklein <joklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:36:38 by joklein           #+#    #+#             */
-/*   Updated: 2025/04/14 16:23:18 by joklein          ###   ########.fr       */
+/*   Updated: 2025/04/15 10:10:17 by joklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <fstream>
-# include <iostream>
-# include <string>
+#include <fstream>
+#include <iostream>
+#include <string>
 
-std::string repalce_input(std::string line, int i, int u, char **argv)
+std::string repalce_input(std::string line, int i, char **argv)
 {
-	std::string line_new = line.substr(0, i - u);
+	std::string line_new = line.substr(0, i);
 	line_new += argv[3];
-	line_new += line.substr(i);
+	line_new += line.substr(i + std::string(argv[2]).length());
 	return (line_new);
 }
 
 int	main(int argc, char **argv)
 {
-	int	u;
-	int	i_temp;
+	unsigned long	i;
 
 	std::string line;
 	if (argc != 4)
@@ -38,10 +37,7 @@ int	main(int argc, char **argv)
 		std::cout << "wrong file" << std::endl;
 		return (1);
 	}
-	std::string in_file_name = argv[1];
-    std::string replace_arg = argv[3];
-	std::string out_file_name = in_file_name + ".replace";
-	std::ofstream out_file(out_file_name);
+	std::ofstream out_file(std::string(argv[1]) + ".replace");
 	if (!out_file)
 	{
 		std::cerr << "could not open file" << std::endl;
@@ -49,20 +45,11 @@ int	main(int argc, char **argv)
 	}
 	while (std::getline(file, line))
 	{
-		for (int i = 0; line[i]; i++)
+		i = 0;
+		while ((i = line.find(argv[2], i)) != std::string::npos)
 		{
-			u = 0;
-			i_temp = i;
-			while (line[i] == argv[2][u])
-			{
-				i++;
-				u++;
-			}
-			if (argv[2][u] == '\0')
-			{
-				line = repalce_input(line, i, u, argv);
-				i = i_temp + replace_arg.length();
-			}
+			line = repalce_input(line, i, argv);
+			i += std::string(argv[3]).length();
 		}
 		out_file << line << std::endl;
 	}

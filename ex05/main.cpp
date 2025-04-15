@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joklein <joklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 11:50:53 by joklein           #+#    #+#             */
-/*   Updated: 2025/04/15 09:47:13 by joklein          ###   ########.fr       */
+/*   Created: 2025/04/14 16:39:41 by joklein           #+#    #+#             */
+/*   Updated: 2025/04/14 17:26:19 by joklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombieHorde.hpp"
+#include "Harl.hpp"
 
-Zombie::Zombie(){}
-
-Zombie::Zombie(std::string name) : m_name(name){}
-
-Zombie::~Zombie(){
-	std::cout << "Zombie " << m_name << " destroyed" << std::endl;
-}
-
-void Zombie::announce(void){
-	std::cout << m_name << " : BraiiiiiiinnnzzzZ..." << std::endl;
+int main()
+{
+    Harl level;
+    level.complain("DEBUG");
+    level.complain("INFO");
+    level.complain("WARNING");
+    level.complain("ERROR");
+    level.complain("");
 }

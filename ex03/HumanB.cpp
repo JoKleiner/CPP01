@@ -6,7 +6,7 @@
 /*   By: joklein <joklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:57:44 by joklein           #+#    #+#             */
-/*   Updated: 2025/04/14 11:16:37 by joklein          ###   ########.fr       */
+/*   Updated: 2025/04/15 09:49:13 by joklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ HumanB::HumanB(std::string name) : m_name(name), m_weapon(nullptr){}
 
 HumanB::HumanB(Weapon &weapon) : m_weapon(&weapon){}
 
-void HumanB::setWeapon(Weapon &weapon)
-{
+void HumanB::setWeapon(Weapon &weapon){
 	m_weapon = &weapon;
 }
 

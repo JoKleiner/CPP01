@@ -1,6 +1,6 @@
 
 NAME = horde
-CXX = c++
+CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17
 
 OBJ_DIR		:= obj_dir

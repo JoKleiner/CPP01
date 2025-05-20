@@ -6,7 +6,7 @@
 /*   By: joklein <joklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:39:46 by joklein           #+#    #+#             */
-/*   Updated: 2025/04/15 10:14:01 by joklein          ###   ########.fr       */
+/*   Updated: 2025/04/15 10:41:48 by joklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void Harl::complain(std::string level)
 {
 	std::string mssg[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*mssg_ptr[4])() = {&Harl::debug, &Harl::info, &Harl::warning,&Harl::error};
-	for (unsigned long i = 0; i < mssg->length(); i++)
+	for (unsigned long i = 0; i < std::size(mssg); i++)
 	{
 		if (level == mssg[i])
 		{
